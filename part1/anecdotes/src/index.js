@@ -8,18 +8,26 @@ const Button = (props) => (
 const App = (props) => {
 
   const [selected, setSelected] = useState(0)
-  const [selectCounter, setCSelectCounter] = useState(Array(anecdotes.length).fill(0))
+  const [selectCounter, setSelectCounter] = useState(Array(anecdotes.length).fill(0))
 
   return (
     <div>
-      {props.anecdotes[selected]} <br/>
-      <p>has {selectCounter[selected]}</p>
+      <h1>Anecdote of the day</h1>
+      <p>
+        {props.anecdotes[selected]} <br/>
+        has {selectCounter[selected]} votes
+      </p>
       <Button text="vote" click={() => {
-        const copy = {...selectCounter}
+        const copy = [...selectCounter]
         copy[selected] += 1
-        setCSelectCounter(copy)
+        setSelectCounter(copy)
       }} />
       <Button text="next anecdote" click={() => setSelected(Math.floor(Math.random() * anecdotes.length))} />
+      <h1>Anecdote with most votes</h1>
+      <p>
+        {anecdotes[selectCounter.indexOf(Math.max(...selectCounter))]} <br/>
+        Has {Math.max(...selectCounter)} votes
+      </p>
     </div>
   )
 }
