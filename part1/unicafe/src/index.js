@@ -15,7 +15,10 @@ const Feedback = (props) => (
 )
 
 const Statistic = (props) => (
-  <p>{props.text} {props.value} {props.unit}</p>
+  <tr>
+    <td>{props.text}</td> 
+    <td>{props.value} {props.unit}</td>
+  </tr>
 )
 
 const Statistics = (props) => {
@@ -34,11 +37,13 @@ const Statistics = (props) => {
   :
   <>
     <h1>Statistics</h1>
+    <table>
     <Statistic text="good" value={good} />
     <Statistic text="neutral" value={neutral} />
     <Statistic text="bad" value={bad} />
     <Statistic text="average" value={average} />
     <Statistic text="positive" unit="%" value={positivep} />
+    </table>
   </>
   )
 
