@@ -10,14 +10,27 @@ const Feedback = (props) => (
   </>
 )
 
-const Statistics = (props) => (
+const Statistics = (props) => {
+
+  const { good, neutral, bad } = props
+
+  const total = good + neutral + bad
+  const average = (good-bad)/total
+  const positivep = (good/total)*100
+
+  return (
   <>
     <h1>Statistics</h1>
-    <p>good {props.good}</p>
-    <p>neutral {props.neutral}</p>
-    <p>bad {props.bad}</p>
+    <p>good {good}</p>
+    <p>neutral {neutral}</p>
+    <p>bad {bad}</p>
+    <p>all {total}</p>
+    <p>average {average}</p>
+    <p>positive {positivep} %</p>
   </>
-)
+  )
+
+  }
 
 const App = () => {
   // save clicks of each button to its own state
