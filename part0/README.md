@@ -4,7 +4,7 @@ Title in 0.4 and 0.6 should read "Creating a new note", there is a typo.
 
 ![](new_note.png)
 
-## 0.5: Singe page app 
+## 0.5: Single page app 
 
 ![](note_spa.png)
 
