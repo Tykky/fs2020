@@ -12,9 +12,13 @@ const App = () => {
 
   const submitHandler = (event) => {
     event.preventDefault()
+    const obj = {name: newName}
     const copy = [...persons]
-    copy.push({name: newName})
-    setPersons(copy)
+    if (!copy.some(person => person.name === newName)) {
+      setPersons(copy)
+    } else {
+      window.alert(`${newName} is already added to phonebook`)
+    }
   }
 
   return (
