@@ -9,7 +9,7 @@ const Persons = (props) => {
     }
     return (filterPersons().map(person =>
         <p>{person.name} {person.number}</p>
-      ))
+    ))
 }
 
 export default Persons
