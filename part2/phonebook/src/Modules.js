@@ -19,10 +19,6 @@ const PersonForm = (props) => {
         }
     }
 
-    const deleteHandler = event => {
-      
-    }
-
     return (
         <form onSubmit={submitHandler}>
         <div>
@@ -45,14 +41,23 @@ const Filter = (props) => (
 )
 
 const Persons = (props) => {
-    const filterPersons = () => {
-      const copy = [...props.persons]
+  
+  let copy = [...props.persons]
+
+  const filterPersons = () => {
       return copy.filter(person => (
         person.name.toLowerCase().includes(props.filter.toLowerCase())
       ))
     }
+
     return (filterPersons().map(person =>
-        <p>{person.name} {person.number}</p>
+        <p>{person.name} {person.number} <button onClick={() => {
+          if (window.confirm(`Delete ${person.name}`)) {
+            copy = copy.filter(item => item.id != person.id)
+            service.destroy(person.id).then(props.setPersons(copy))
+          }
+        }}>
+        delete</button> </p>
     ))
 }
 
