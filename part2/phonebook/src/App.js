@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import {PersonForm, Filter, Persons} from './Modules.js'
+import {PersonForm, Filter, Persons, Notification} from './Modules.js'
+import './App.css'
 
 const App = () => {
 
@@ -8,6 +9,8 @@ const App = () => {
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber] = useState('')
   const [ filter, setFilter ] = useState('')
+  const [ notification, setNotification ] = useState(null)
+  const [ notificationClass, setNotificationClass ] = useState('')
 
   useEffect(() => {
     axios
@@ -22,6 +25,8 @@ const App = () => {
       
       <h2>Phonebook</h2>
 
+      <Notification message={notification} class={notificationClass} />
+
       <Filter onChange={event => setFilter(event.target.value)} />
 
       <h3>Add a new</h3>
@@ -31,7 +36,9 @@ const App = () => {
                   persons={persons}
                   newName={newName}
                   newNumber={newNumber}
-                  setPersons={setPersons} /> 
+                  setPersons={setPersons} 
+                  setNotification={setNotification}
+                  setNotificationClass={setNotificationClass} /> 
 
       <h3>Numbers</h3>
 

@@ -19,6 +19,31 @@
       "name": "Arto Hellas",
       "number": "040-123",
       "id": 5
+    },
+    {
+      "name": "booster",
+      "number": "040",
+      "id": 6
+    },
+    {
+      "name": "primer",
+      "number": "asd",
+      "id": 7
+    },
+    {
+      "name": "booster XD",
+      "number": "huge numer",
+      "id": 8
+    },
+    {
+      "name": "giga primer",
+      "number": "xDDD",
+      "id": 9
+    },
+    {
+      "name": "XDDD",
+      "number": "asdasdasd",
+      "id": 10
     }
   ]
 }

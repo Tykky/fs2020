@@ -1,6 +1,17 @@
 import React from 'react'
 import service from './service.js'
 
+const Notification = (props) => {
+  if (props.message === null) {
+    return null
+  }
+  return (
+    <div class={props.class}>
+      {props.message}
+    </div>
+  )
+}  
+
 const PersonForm = (props) => {
 
     const submitHandler = event => {
@@ -11,6 +22,9 @@ const PersonForm = (props) => {
           service.create(obj).then(() => {
             copy.push(obj)
             props.setPersons(copy)
+            props.setNotification(`Added ${obj.name}`)
+            props.setNotificationClass("success")
+            setTimeout(() => props.setNotification(null), 2000)
           }).catch(error => {
             alert('POST failed', error)
           })
@@ -68,5 +82,6 @@ const Persons = (props) => {
 export {
     PersonForm,
     Filter,
-    Persons
+    Persons,
+    Notification
 }
