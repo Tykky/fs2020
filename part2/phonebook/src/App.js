@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import {PersonForm, Filter, Persons, Notification} from './Modules.js'
+import {PersonForm, Filter, Persons, Notification} from './Components.js'
 import './App.css'
 
 const App = () => {
@@ -42,7 +42,11 @@ const App = () => {
 
       <h3>Numbers</h3>
 
-      <Persons persons={persons} setPersons={setPersons} filter={filter}/>
+      <Persons persons={persons} 
+               setPersons={setPersons} 
+               filter={filter}
+               setNotification={setNotification}
+               setNotificationClass={setNotificationClass} />
 
     </div>
   )

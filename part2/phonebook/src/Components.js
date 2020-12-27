@@ -25,8 +25,6 @@ const PersonForm = (props) => {
             props.setNotification(`Added ${obj.name}`)
             props.setNotificationClass("success")
             setTimeout(() => props.setNotification(null), 2000)
-          }).catch(error => {
-            alert('POST failed', error)
           })
         } else if(window.confirm(`${props.newName} is already added to phonebook, replace the old number with a new one?`)) {
           const id = props.persons.filter(person => person.name === obj.name)[0].id
@@ -73,6 +71,11 @@ const Persons = (props) => {
           if (window.confirm(`Delete ${person.name}`)) {
             copy = copy.filter(item => item.id !== person.id)
             service.destroy(person.id).then(props.setPersons(copy))
+            .catch( error => {
+              props.setNotification(`Information of ${person.name} has already been removed from server`)
+              props.setNotificationClass('error')
+              setTimeout(() => props.setNotification(null), 5000)
+            })
           }
         }}>
         delete</button> </p>
