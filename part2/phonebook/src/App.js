@@ -5,20 +5,23 @@ import './App.css'
 
 const App = () => {
 
-  const [persons, setPersons] = useState([])
+  const [ persons, setPersons] = useState([])
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber] = useState('')
   const [ filter, setFilter ] = useState('')
   const [ notification, setNotification ] = useState(null)
   const [ notificationClass, setNotificationClass ] = useState('')
+  const [ update, setUpdate ] = useState(true)
 
-  useEffect(() => {
+  const triggerUpdate = () => setUpdate(!update)
+
+ useEffect(() => {
     axios
       .get('http://localhost:3001/persons')
       .then(response => {
         setPersons(response.data)
       })
-  },[])
+  },[update])
 
   return (
     <div>
@@ -38,7 +41,8 @@ const App = () => {
                   newNumber={newNumber}
                   setPersons={setPersons} 
                   setNotification={setNotification}
-                  setNotificationClass={setNotificationClass} /> 
+                  setNotificationClass={setNotificationClass}
+                  triggerUpdate={triggerUpdate} /> 
 
       <h3>Numbers</h3>
 
@@ -46,7 +50,8 @@ const App = () => {
                setPersons={setPersons} 
                filter={filter}
                setNotification={setNotification}
-               setNotificationClass={setNotificationClass} />
+               setNotificationClass={setNotificationClass}
+               triggerUpdate={triggerUpdate} />
 
     </div>
   )

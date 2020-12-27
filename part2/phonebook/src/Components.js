@@ -1,5 +1,5 @@
 import React from 'react'
-import service from './service.js'
+import service from './Service.js'
 
 const Notification = (props) => {
   if (props.message === null) {
@@ -22,6 +22,7 @@ const PersonForm = (props) => {
           service.create(obj).then(() => {
             copy.push(obj)
             props.setPersons(copy)
+            props.triggerUpdate()
             props.setNotification(`Added ${obj.name}`)
             props.setNotificationClass("success")
             setTimeout(() => props.setNotification(null), 2000)
@@ -76,6 +77,7 @@ const Persons = (props) => {
               props.setNotificationClass('error')
               setTimeout(() => props.setNotification(null), 5000)
             })
+            props.triggerUpdate()
           }
         }}>
         delete</button> </p>
