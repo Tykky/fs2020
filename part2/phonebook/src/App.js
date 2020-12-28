@@ -5,6 +5,8 @@ import './App.css'
 
 const App = () => {
 
+  const baseUrl = '/api/persons'
+
   const [ persons, setPersons] = useState([])
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber] = useState('')
@@ -17,7 +19,7 @@ const App = () => {
 
  useEffect(() => {
     axios
-      .get('http://localhost:3001/persons')
+      .get(baseUrl)
       .then(response => {
         setPersons(response.data)
       })
