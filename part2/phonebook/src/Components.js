@@ -27,6 +27,12 @@ const PersonForm = (props) => {
             props.setNotificationClass("success")
             setTimeout(() => props.setNotification(null), 2000)
           })
+          .catch(error =>{
+            console.log(error.response.data)
+            props.setNotification(error.response.data.error)
+            props.setNotificationClass('error')
+            setTimeout(() => props.setNotification(null), 5000)
+          })
         } else if(window.confirm(`${props.newName} is already added to phonebook, replace the old number with a new one?`)) {
           const id = props.persons.filter(person => person.name === obj.name)[0].id
           const index = props.persons.findIndex(person => person.id === id)
