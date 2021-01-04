@@ -12,8 +12,10 @@ const Notification = (props) => {
   )
 }  
 
-const PersonForm = (props) => {
-    const submitHandler = event => {
+const PersonForm = (props) => 
+{
+    const submitHandler = event => 
+    {
         event.preventDefault()
         const obj = {name: props.newName, number: props.newNumber}
         const copy = [...props.persons]
@@ -26,7 +28,7 @@ const PersonForm = (props) => {
             props.setNotificationClass("success")
             setTimeout(() => props.setNotification(null), 2000)
           })
-          .catch(error =>{
+          .catch(error => {
             console.log(error.response.data)
             props.setNotification(error.response.data.error)
             props.setNotificationClass('error')
