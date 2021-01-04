@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import {PersonForm, Filter, Persons, Notification} from './Components.js'
+import { PersonForm, Filter, Persons, Notification } from './Components.js'
 import './App.css'
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
 
   const triggerUpdate = () => setUpdate(!update)
 
- useEffect(() => {
+  useEffect(() => {
     axios
       .get(baseUrl)
       .then(response => {
@@ -27,36 +27,27 @@ const App = () => {
 
   return (
     <div>
-      
       <h2>Phonebook</h2>
-
       <Notification message={notification} class={notificationClass} />
-
       <Filter onChange={event => setFilter(event.target.value)} />
-
       <h3>Add a new</h3>
-
       <PersonForm nameHandler={event => setNewName(event.target.value)}
-                  numberHandler={event => setNewNumber(event.target.value)}
-                  persons={persons}
-                  newName={newName}
-                  newNumber={newNumber}
-                  setPersons={setPersons} 
-                  setNotification={setNotification}
-                  setNotificationClass={setNotificationClass}
-                  triggerUpdate={triggerUpdate} /> 
-
+        numberHandler={event => setNewNumber(event.target.value)}
+        persons={persons}
+        newName={newName}
+        newNumber={newNumber}
+        setPersons={setPersons}
+        setNotification={setNotification}
+        setNotificationClass={setNotificationClass}
+        triggerUpdate={triggerUpdate} />
       <h3>Numbers</h3>
-
-      <Persons persons={persons} 
-               setPersons={setPersons} 
-               filter={filter}
-               setNotification={setNotification}
-               setNotificationClass={setNotificationClass}
-               triggerUpdate={triggerUpdate} />
-
+      <Persons persons={persons}
+        setPersons={setPersons}
+        filter={filter}
+        setNotification={setNotification}
+        setNotificationClass={setNotificationClass}
+        triggerUpdate={triggerUpdate} />
     </div>
   )
 }
-
-export default App;
+export default App
